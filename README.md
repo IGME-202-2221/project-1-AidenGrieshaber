@@ -4,8 +4,8 @@
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: Aiden Grieshaber
+-   Section: 1
 
 ## Game Design
 
