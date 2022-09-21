@@ -34,8 +34,9 @@ The enemies in my game will also have the ability to shoot, and the player must 
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+Asset Credit:
+Player spritesheet - https://opengameart.org/content/enemy-sprite
+Enemies - https://opengameart.org/content/shmup-enemies
 
 ## Known Issues
 
