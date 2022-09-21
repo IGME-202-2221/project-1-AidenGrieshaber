@@ -30,7 +30,7 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
+The enemies in my game will also have the ability to shoot, and the player must avoid their projectiles
 
 ## Sources
 
