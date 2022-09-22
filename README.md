@@ -4,8 +4,8 @@
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: Aiden Grieshaber
+-   Section: 1
 
 ## Game Design
 
@@ -30,12 +30,13 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
+The enemies in my game will also have the ability to shoot, and the player must avoid their projectiles
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+Asset Credit:
+Player spritesheet - https://opengameart.org/content/enemy-sprite
+Enemies - https://opengameart.org/content/shmup-enemies
 
 ## Known Issues
 
