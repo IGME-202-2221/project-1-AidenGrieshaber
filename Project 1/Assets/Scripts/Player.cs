@@ -46,21 +46,21 @@ public class Player : MonoBehaviour
         transform.position = vehiclePosition;
 
 
-        //Wrap Y
+        //Stop Y
         Camera cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
 
         if (vehiclePosition.y > height / 2)
-            vehiclePosition.y = -height / 2;
-        else if (vehiclePosition.y < -height / 2)
             vehiclePosition.y = height / 2;
+        else if (vehiclePosition.y < -height / 2)
+            vehiclePosition.y = -height / 2;
 
-        //Wrap X
+        //Stop X
         if (vehiclePosition.x > width / 2)
-            vehiclePosition.x = -width / 2;
-        else if (vehiclePosition.x < -width / 2)
             vehiclePosition.x = width / 2;
+        else if (vehiclePosition.x < -width / 2)
+            vehiclePosition.x = -width / 2;
     }
 
     public void OnMove(InputAction.CallbackContext context)
