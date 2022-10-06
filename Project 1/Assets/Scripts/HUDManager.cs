@@ -24,6 +24,6 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreLabel.text = "Score: " + score;
+        scoreLabel.text = "Score: {0:000000000.00}" + score;
     }
 }
