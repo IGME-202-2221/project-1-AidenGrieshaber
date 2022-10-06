@@ -10,10 +10,18 @@ public class HUDManager : MonoBehaviour
     public float playerHealth = 3;
 
     [SerializeField]
-    TextMeshPro scoreLabel;
+    TextMeshProUGUI scoreLabel;
 
     [SerializeField]
     Slider healthBar;
+
+    [SerializeField]
+    RectTransform hudDimensions;
+
+    public float hudWidth
+    {        
+        get { return hudDimensions.anchorMax.x - hudDimensions.anchorMin.x; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +32,6 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreLabel.text = "Score: {0:000000000.00}" + score;
+        scoreLabel.text = "Score: " + score.ToString("000000000");
     }
 }
