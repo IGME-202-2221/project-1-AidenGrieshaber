@@ -30,7 +30,7 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 
 ## Make It Your Own
 
-The enemies in my game will also have the ability to shoot, and the player must avoid their projectiles
+The enemies in my game will also have the ability to shoot, and the player must avoid their projectiles. Also will include minor boss enemy.
 
 ## Sources
 
