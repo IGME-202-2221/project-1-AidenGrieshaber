@@ -26,6 +26,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     BulletBankManager bank;
 
+    [SerializeField]
+    Sprite CenterFrame;
+    [SerializeField]
+    Sprite LeftFrame1;
+    [SerializeField]
+    Sprite LeftFrame2;
+    [SerializeField]
+    Sprite RightFrame1;
+    [SerializeField]
+    Sprite RightFrame2;
+
+    private float velocityIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,14 +79,51 @@ public class Player : MonoBehaviour
             vehiclePosition.x = (width / 2) - (manager.hudWidth * width);
         else if (vehiclePosition.x < -width / 2)
             vehiclePosition.x = -width / 2;
+
+        //apply movement visual
+        if (direction.x > 0)
+        {
+            if (velocityIndex < 0)
+                velocityIndex = 0;
+            velocityIndex += .2f * 60 * Time.deltaTime;
+        }
+        else if (direction.x < 0)
+        {
+            if (velocityIndex > 0)
+                velocityIndex = 0;
+            velocityIndex -= .2f * 60 * Time.deltaTime;
+        }
+        else
+        {
+            if (velocityIndex < 0)
+                velocityIndex += .2f * 60 * Time.deltaTime;
+            else if (velocityIndex > 0)
+                velocityIndex -= .2f * 60 * Time.deltaTime;
+
+            //Lock to center when close
+            if (velocityIndex < .02f && velocityIndex > -.02f)
+                velocityIndex = 0;
+        }
+        if (velocityIndex > 2)
+            velocityIndex = 2;
+        if (velocityIndex < -2)
+            velocityIndex = -2;
+
+        if (velocityIndex == 0)
+            GetComponent<SpriteRenderer>().sprite = CenterFrame;
+        else if (velocityIndex > 1)
+            GetComponent<SpriteRenderer>().sprite = LeftFrame2;
+        else if (velocityIndex > 0)
+            GetComponent<SpriteRenderer>().sprite = LeftFrame1;
+        else if (velocityIndex < -1)
+            GetComponent<SpriteRenderer>().sprite = RightFrame2;
+        else if (velocityIndex < 0)
+            GetComponent<SpriteRenderer>().sprite = RightFrame1;
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         direction = context.ReadValue<Vector2>();
-
-        if (direction.magnitude > 0) //So only turn when moving
-            transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
     }
 
     public void Shoot()
