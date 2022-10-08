@@ -13,6 +13,9 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     CollisionManager collisionManager;
 
+    [SerializeField]
+    BulletBankManager bulletBankManager;
+
     private float spawnTimer = 150;
 
     // Update is called once per frame
@@ -32,14 +35,15 @@ public class StageManager : MonoBehaviour
             float width = height * cam.aspect;
 
             spawnPos.y = (height / 2) + 1;
-            spawnPos.x = Random.Range(-width / 2, width / 2);
+            spawnPos.x = Random.Range(-width / 2, (width / 2) - (screen.hudWidth * width));
 
             anchorPos.y = (height / 2) - Random.Range(-(height / 5) * 2, -(height / 5));
-            anchorPos.x = Random.Range(-width / 2, width / 2);
+            anchorPos.x = Random.Range(-width / 2, (width / 2) - (screen.hudWidth * width));
 
-            GameObject enemy = Instantiate(Enemy1, transform.position, Quaternion.identity, transform);
+            GameObject enemy = Instantiate(Enemy1, spawnPos, Quaternion.identity, transform);
             enemy.GetComponent<EnemyType1>().swingPoint = anchorPos;
             enemy.GetComponent<Enemy>().collisionManager = collisionManager;
+            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager
             collisionManager.AddEnemy(enemy);
         }
     }
