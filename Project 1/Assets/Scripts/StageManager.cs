@@ -37,13 +37,14 @@ public class StageManager : MonoBehaviour
             spawnPos.y = (height / 2) + 1;
             spawnPos.x = Random.Range(-width / 2, (width / 2) - (screen.hudWidth * width));
 
-            anchorPos.y = (height / 2) - Random.Range(-(height / 5) * 2, -(height / 5));
+            anchorPos.y = (height / 2) - Random.Range((height / 5), (height / 5) * 2);
             anchorPos.x = Random.Range(-width / 2, (width / 2) - (screen.hudWidth * width));
 
             GameObject enemy = Instantiate(Enemy1, spawnPos, Quaternion.identity, transform);
             enemy.GetComponent<EnemyType1>().swingPoint = anchorPos;
             enemy.GetComponent<Enemy>().collisionManager = collisionManager;
-            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager
+            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
+            enemy.transform.position = spawnPos;
             collisionManager.AddEnemy(enemy);
         }
     }

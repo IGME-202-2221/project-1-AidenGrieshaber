@@ -22,8 +22,10 @@ public class BulletBankManager : MonoBehaviour
     void Start()
     {
         playerBulletSmallBank = new Stack<GameObject>();
-        //Spawn all needed Bullets
-        for (int i = 0; i < 50; i++)
+        //Spawn initial Bullets
+
+        //TODO: find out why spawning more here causes bullets to vanish
+        for (int i = 0; i < 1; i++)
         {
             GameObject bullet = Instantiate(playerBulletSmall, transform.position, Quaternion.identity, transform);
             bullet.GetComponent<Playerbullet>().SetBank(gameObject);
@@ -33,7 +35,7 @@ public class BulletBankManager : MonoBehaviour
         }
 
         enemyBullet1Bank = new Stack<GameObject>();
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 1; i++)
         {
             GameObject bullet = Instantiate(enemyBullet1, transform.position, Quaternion.identity, transform);
             bullet.GetComponent<Playerbullet>().SetBank(gameObject);
