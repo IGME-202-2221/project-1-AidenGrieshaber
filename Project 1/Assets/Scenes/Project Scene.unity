@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &601557756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +612,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -672,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 4074024608797933388, guid: afab95902e39af245b67f6b4012036a8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8f8308814e8a89d46804c010d928aba3, type: 3}
+      objectReference: {fileID: -417832892, guid: 48708c0bc7c529d4bbb256a4326c23b8, type: 3}
     - target: {fileID: 4074024608797933388, guid: afab95902e39af245b67f6b4012036a8, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -683,11 +683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4223366851969893339, guid: afab95902e39af245b67f6b4012036a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.68
+      value: -1.667
       objectReference: {fileID: 0}
     - target: {fileID: 4223366851969893339, guid: afab95902e39af245b67f6b4012036a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.32
+      value: -4.097
       objectReference: {fileID: 0}
     - target: {fileID: 4223366851969893339, guid: afab95902e39af245b67f6b4012036a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -938,6 +938,11 @@ MonoBehaviour:
   turnAmount: 0
   manager: {fileID: 994580670}
   bank: {fileID: 279493309}
+  CenterFrame: {fileID: -417832892, guid: 48708c0bc7c529d4bbb256a4326c23b8, type: 3}
+  LeftFrame1: {fileID: 671551456, guid: 48708c0bc7c529d4bbb256a4326c23b8, type: 3}
+  LeftFrame2: {fileID: 2027928928, guid: 48708c0bc7c529d4bbb256a4326c23b8, type: 3}
+  RightFrame1: {fileID: 1244861570, guid: 48708c0bc7c529d4bbb256a4326c23b8, type: 3}
+  RightFrame2: {fileID: 839261094, guid: 48708c0bc7c529d4bbb256a4326c23b8, type: 3}
 --- !u!1 &1686874361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,6 +1080,7 @@ MonoBehaviour:
   Enemy1: {fileID: 9221473801178134075, guid: e840410de7ede7441851d68a38621ea9, type: 3}
   screen: {fileID: 994580670}
   collisionManager: {fileID: 811920222}
+  bulletBankManager: {fileID: 279493309}
 --- !u!4 &1741841650
 Transform:
   m_ObjectHideFlags: 0
@@ -1083,7 +1089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741841648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.75, y: -2.98, z: 31.727398}
+  m_LocalPosition: {x: -8.66, y: 3.49, z: 31.727398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1278,7 +1284,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

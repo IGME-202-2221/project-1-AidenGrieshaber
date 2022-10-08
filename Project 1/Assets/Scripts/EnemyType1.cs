@@ -16,7 +16,7 @@ public class EnemyType1 : MonoBehaviour
         if (transform.position.y > swingPoint.y)
         {
             Vector3 swingArc = swingPoint - transform.position;
-            swingArc.y *= 5; //make vertical move first
+            swingArc.y *= 3; //make vertical move first
 
             velocity = swingArc.normalized * .5f * Time.deltaTime;
         }
