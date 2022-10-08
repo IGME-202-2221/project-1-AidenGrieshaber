@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     HUDManager manager;
 
+    [SerializeField]
+    BulletBankManager bank;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,5 +74,10 @@ public class Player : MonoBehaviour
 
         if (direction.magnitude > 0) //So only turn when moving
             transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
+    }
+
+    public void Shoot()
+    {
+        bank.RequestBullet(transform.position, "playerBulletSmall");
     }
 }

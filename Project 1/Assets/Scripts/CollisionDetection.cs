@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public bool AABBCollision(GameObject obj1, GameObject obj2)
     {
         Bounds bounds1 = obj1.GetComponent<SpriteRenderer>().bounds;
