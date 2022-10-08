@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -140, y: 0}
-  m_SizeDelta: {x: -320, y: -40}
+  m_AnchoredPosition: {x: 10, y: 290}
+  m_SizeDelta: {x: -20, y: -620}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198695650
 MonoBehaviour:
@@ -428,7 +428,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &994580669
 RectTransform:
@@ -465,8 +465,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   playerHealth: 3
-  scoreLabel: {fileID: 0}
+  scoreLabel: {fileID: 198695650}
   healthBar: {fileID: 601557756}
+  hudDimensions: {fileID: 1957366943}
 --- !u!1 &1031968169
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,11 +667,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4223366851969893339, guid: afab95902e39af245b67f6b4012036a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.67
+      value: -1.68
       objectReference: {fileID: 0}
     - target: {fileID: 4223366851969893339, guid: afab95902e39af245b67f6b4012036a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: -4.32
       objectReference: {fileID: 0}
     - target: {fileID: 4223366851969893339, guid: afab95902e39af245b67f6b4012036a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -907,6 +908,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   turnAmount: 0
+  manager: {fileID: 994580670}
 --- !u!1 &1686874361
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1686874362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,7 +1125,7 @@ RectTransform:
   m_Father: {fileID: 994580669}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.8}
+  m_AnchorMin: {x: 0.675, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}

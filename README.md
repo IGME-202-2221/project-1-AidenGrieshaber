@@ -37,6 +37,13 @@ The enemies in my game will also have the ability to shoot, and the player must 
 Asset Credit:
 Player spritesheet - https://opengameart.org/content/enemy-sprite
 Enemies - https://opengameart.org/content/shmup-enemies
+        - https://opengameart.org/content/sci-fi-shoot-em-up-object-images
+Projectiles - https://opengameart.org/content/bullet-collection-1-m484
+        - https://opengameart.org/content/m484-lightning-weapon
+        - https://opengameart.org/content/explosion-animated
+        - https://opengameart.org/content/explosion-set-1-m484-games
+        - https://opengameart.org/content/sci-fi-shoot-em-up-object-images
+Background - https://opengameart.org/content/galaxy-for-shmup
 
 ## Known Issues
 

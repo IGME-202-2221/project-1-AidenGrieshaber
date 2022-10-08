@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     float turnAmount = 0f;
 
+    [SerializeField]
+    HUDManager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -57,8 +59,8 @@ public class Player : MonoBehaviour
             vehiclePosition.y = -height / 2;
 
         //Stop X
-        if (vehiclePosition.x > width / 2)
-            vehiclePosition.x = width / 2;
+        if (vehiclePosition.x > (width / 2) - (manager.hudWidth * width))
+            vehiclePosition.x = (width / 2) - (manager.hudWidth * width);
         else if (vehiclePosition.x < -width / 2)
             vehiclePosition.x = -width / 2;
     }
