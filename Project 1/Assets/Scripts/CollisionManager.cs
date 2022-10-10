@@ -57,7 +57,7 @@ public class CollisionManager : MonoBehaviour
             if (GetComponent<CollisionDetection>().AABBCollision(player, smallPowerItems[i]))
             {
                 smallPowerItems[i].GetComponent<Playerbullet>().Collide();
-                player.GetComponent<Player>().Power += 0.2f;
+                player.GetComponent<Player>().Power += 0.02f;
 
                 hud.power = player.GetComponent<Player>().Power;
             }

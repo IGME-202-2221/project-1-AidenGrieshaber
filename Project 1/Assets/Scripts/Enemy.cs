@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     public BulletBankManager bulletBankManager;
 
+    [SerializeField]
+    string powerType;
+
     public void damage(int damage)
     {
         health -= damage;
@@ -28,5 +31,6 @@ public class Enemy : MonoBehaviour
         collisionManager.RemoveEnemy(gameObject);
         collisionManager.RegisterKill(pointAmount);
         Destroy(gameObject);
+        bulletBankManager.RequestBullet(transform.position, powerType);
     }
 }

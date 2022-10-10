@@ -8,6 +8,7 @@ public class HUDManager : MonoBehaviour
 {
     public float score = 0;
     public float playerHealth = 3;
+    public float power = 1;
 
     [SerializeField]
     TextMeshProUGUI scoreLabel;
@@ -21,8 +22,6 @@ public class HUDManager : MonoBehaviour
     [SerializeField]
     RectTransform hudDimensions;
 
-    public float power;
-
     public float hudWidth
     {        
         get { return hudDimensions.anchorMax.x - hudDimensions.anchorMin.x; }
@@ -32,6 +31,6 @@ public class HUDManager : MonoBehaviour
     void Update()
     {
         scoreLabel.text = "Score: " + score.ToString("000000000");
-        powerLabel.text = "Power: " + score.ToString("0.00");
+        powerLabel.text = "Power: " + power.ToString("0.00");
     }
 }

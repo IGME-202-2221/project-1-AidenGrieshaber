@@ -128,7 +128,7 @@ public class BulletBankManager : MonoBehaviour
                 collisionManager.enemyBullets.Remove(bullet);
                 break;
             case "powerItemSmall":
-                playerBulletSmallBank.Push(bullet);
+                powerBankSmall.Push(bullet);
                 collisionManager.smallPowerItems.Remove(bullet);
                 break;
         }

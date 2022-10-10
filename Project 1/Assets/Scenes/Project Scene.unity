@@ -577,11 +577,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   playerHealth: 3
+  power: 0
   scoreLabel: {fileID: 198695650}
-  powerLabel: {fileID: 0}
+  powerLabel: {fileID: 1814412289}
   healthBar: {fileID: 601557756}
   hudDimensions: {fileID: 1957366943}
-  power: 0
 --- !u!1 &1020684377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,7 +1344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: POWER 0.00
+  m_text: POWER 1.00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

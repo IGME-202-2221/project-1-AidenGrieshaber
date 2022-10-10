@@ -102,6 +102,7 @@ MonoBehaviour:
   collisionManager: {fileID: 0}
   pointAmount: 200
   bulletBankManager: {fileID: 0}
+  powerType: powerItemSmall
 --- !u!114 &9221473801178134074
 MonoBehaviour:
   m_ObjectHideFlags: 0
