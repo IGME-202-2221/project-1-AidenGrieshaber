@@ -12,11 +12,15 @@ public class BulletBankManager : MonoBehaviour
     [SerializeField]
     GameObject enemyBullet1;
     [SerializeField]
+    GameObject powerItemSmall;
+
+    [SerializeField]
     CollisionManager collisionManager;
 
     //Bullet Storage
     private Stack<GameObject> playerBulletSmallBank;
     private Stack<GameObject> enemyBullet1Bank;
+    private Stack<GameObject> powerBankSmall;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +47,16 @@ public class BulletBankManager : MonoBehaviour
             bullet.GetComponent<Playerbullet>().SetScreen(screen);
             enemyBullet1Bank.Push(bullet);
         }
+
+        powerBankSmall = new Stack<GameObject>();
+        for(int i = 0; i < 1; i++)
+        {
+            GameObject bullet = Instantiate(powerItemSmall, transform.position, Quaternion.identity, transform);
+            bullet.GetComponent<Playerbullet>().SetBank(gameObject);
+            bullet.GetComponent<Playerbullet>().Collide();
+            bullet.GetComponent<Playerbullet>().SetScreen(screen);
+            powerBankSmall.Push(bullet);
+        }
     }
 
     public Stack<GameObject> getPlayerBulletSmalls()
@@ -64,6 +78,10 @@ public class BulletBankManager : MonoBehaviour
             case "enemyBullet1":
                 bank = enemyBullet1Bank;
                 bulletType = enemyBullet1;
+                break;
+            case "powerItemSmall":
+                bank = powerBankSmall;
+                bulletType = powerItemSmall;
                 break;
         }
 
@@ -91,6 +109,9 @@ public class BulletBankManager : MonoBehaviour
             case "enemyBullet1":
                 collisionManager.enemyBullets.Add(bullet);
                 break;
+            case "powerItemSmall":
+                collisionManager.smallPowerItems.Add(bullet);
+                break;
         }
     }
 
@@ -105,6 +126,10 @@ public class BulletBankManager : MonoBehaviour
             case "enemyBullet1":
                 enemyBullet1Bank.Push(bullet);
                 collisionManager.enemyBullets.Remove(bullet);
+                break;
+            case "powerItemSmall":
+                playerBulletSmallBank.Push(bullet);
+                collisionManager.smallPowerItems.Remove(bullet);
                 break;
         }
         bullet.transform.position = transform.position;

@@ -39,6 +39,22 @@ public class Player : MonoBehaviour
 
     private float velocityIndex = 0;
 
+    private float power = 1;
+
+    public float Power
+    {
+        get
+        { 
+            return power; 
+        }
+        set
+        {
+            power = value;
+            if (power > 4)
+                power = 4;
+        } 
+    }
+
     // Start is called before the first frame update
     void Start()
     {

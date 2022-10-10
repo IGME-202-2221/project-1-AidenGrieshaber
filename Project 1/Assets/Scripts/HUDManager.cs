@@ -13,25 +13,25 @@ public class HUDManager : MonoBehaviour
     TextMeshProUGUI scoreLabel;
 
     [SerializeField]
+    TextMeshProUGUI powerLabel;
+
+    [SerializeField]
     Slider healthBar;
 
     [SerializeField]
     RectTransform hudDimensions;
+
+    public float power;
 
     public float hudWidth
     {        
         get { return hudDimensions.anchorMax.x - hudDimensions.anchorMin.x; }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         scoreLabel.text = "Score: " + score.ToString("000000000");
+        powerLabel.text = "Power: " + score.ToString("0.00");
     }
 }
