@@ -10,6 +10,8 @@ public class BulletBankManager : MonoBehaviour
     [SerializeField]
     GameObject playerBulletSmall;
     [SerializeField]
+    GameObject playerBulletLarge;
+    [SerializeField]
     GameObject enemyBullet1;
     [SerializeField]
     GameObject powerItemSmall;
@@ -19,6 +21,7 @@ public class BulletBankManager : MonoBehaviour
 
     //Bullet Storage
     private Stack<GameObject> playerBulletSmallBank;
+    private Stack<GameObject> playerBulletLargeBank;
     private Stack<GameObject> enemyBullet1Bank;
     private Stack<GameObject> powerBankSmall;
 
@@ -29,7 +32,7 @@ public class BulletBankManager : MonoBehaviour
         //Spawn initial Bullets
 
         //TODO: find out why spawning more here causes bullets to vanish
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 0; i++)
         {
             GameObject bullet = Instantiate(playerBulletSmall, transform.position, Quaternion.identity, transform);
             bullet.GetComponent<Playerbullet>().SetBank(gameObject);
@@ -39,7 +42,7 @@ public class BulletBankManager : MonoBehaviour
         }
 
         enemyBullet1Bank = new Stack<GameObject>();
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 0; i++)
         {
             GameObject bullet = Instantiate(enemyBullet1, transform.position, Quaternion.identity, transform);
             bullet.GetComponent<Playerbullet>().SetBank(gameObject);
@@ -49,13 +52,23 @@ public class BulletBankManager : MonoBehaviour
         }
 
         powerBankSmall = new Stack<GameObject>();
-        for(int i = 0; i < 1; i++)
+        for(int i = 0; i < 0; i++)
         {
             GameObject bullet = Instantiate(powerItemSmall, transform.position, Quaternion.identity, transform);
             bullet.GetComponent<Playerbullet>().SetBank(gameObject);
             bullet.GetComponent<Playerbullet>().Collide();
             bullet.GetComponent<Playerbullet>().SetScreen(screen);
             powerBankSmall.Push(bullet);
+        }
+
+        playerBulletLargeBank = new Stack<GameObject>();
+        for(int i = 1; i < 0; i++)
+        {
+            GameObject bullet = Instantiate(playerBulletLarge, transform.position, Quaternion.identity, transform);
+            bullet.GetComponent<Playerbullet>().SetBank(gameObject);
+            bullet.GetComponent<Playerbullet>().Collide();
+            bullet.GetComponent<Playerbullet>().SetScreen(screen);
+            playerBulletLargeBank.Push(bullet);
         }
     }
 
@@ -74,6 +87,10 @@ public class BulletBankManager : MonoBehaviour
             case "playerBulletSmall":
                 bank = playerBulletSmallBank;
                 bulletType = playerBulletSmall;
+                break;
+            case "playerBulletLarge":
+                bank = playerBulletLargeBank;
+                bulletType = playerBulletLarge;
                 break;
             case "enemyBullet1":
                 bank = enemyBullet1Bank;
@@ -106,6 +123,9 @@ public class BulletBankManager : MonoBehaviour
             case "playerBulletSmall":
                 collisionManager.smallPlayerBullets.Add(bullet);
                 break;
+            case "playerBulletLarge":
+                collisionManager.largePlayerBullets.Add(bullet);
+                break;
             case "enemyBullet1":
                 collisionManager.enemyBullets.Add(bullet);
                 break;
@@ -122,6 +142,10 @@ public class BulletBankManager : MonoBehaviour
             case "playerBulletSmall":
                 playerBulletSmallBank.Push(bullet);
                 collisionManager.smallPlayerBullets.Remove(bullet);
+                break;
+            case "playerBulletLarge":
+                playerBulletLargeBank.Push(bullet);
+                collisionManager.largePlayerBullets.Remove(bullet);
                 break;
             case "enemyBullet1":
                 enemyBullet1Bank.Push(bullet);

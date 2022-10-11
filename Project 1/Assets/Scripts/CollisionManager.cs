@@ -16,6 +16,7 @@ public class CollisionManager : MonoBehaviour
     HUDManager hud;
 
     public List<GameObject> smallPlayerBullets = new List<GameObject>();
+    public List<GameObject> largePlayerBullets = new List<GameObject>();
     public List<GameObject> enemyBullets = new List<GameObject>();
     public List<GameObject> smallPowerItems = new List<GameObject>();
 
@@ -40,6 +41,17 @@ public class CollisionManager : MonoBehaviour
                 {
                     enemies[j].GetComponent<Enemy>().damage(1);
                     smallPlayerBullets[i].GetComponent<Playerbullet>().Collide();
+                }
+            }
+        }
+        for (int i = largePlayerBullets.Count - 1; i >= 0; i--)
+        {
+            for (int j = enemies.Count - 1; j >= 0; j--)
+            {
+                if (GetComponent<CollisionDetection>().AABBCollision(largePlayerBullets [i], enemies[j]))
+                {
+                    enemies[j].GetComponent<Enemy>().damage(3);
+                    largePlayerBullets[i].GetComponent<Playerbullet>().Collide();
                 }
             }
         }
