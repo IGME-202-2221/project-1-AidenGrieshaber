@@ -9,11 +9,11 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: Top-down
+-   Camera Movement: No camera movement
+-   Player Health: Lives
+-   End Condition: Defeat the boss
+-   Scoring: Destroying enemies rewards points
 
 ### Game Description
 
@@ -26,11 +26,11 @@ _A brief explanation of your game. Inculde what is the objective for the player.
     -   Down: Down Arrow
     -   Left: Left Arrow
     -   Right: Right Arrow
--   Fire: Z
+-   Shoot: Z
 
 ## Make It Your Own
 
-The enemies in my game will also have the ability to shoot, and the player must avoid their projectiles. Also will include minor boss enemy.
+There will be a boss enemy at the end of the stage. Player can pick up energy items to increase the power of their shots
 
 ## Sources
 
@@ -47,7 +47,7 @@ Background - https://opengameart.org/content/galaxy-for-shmup
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+Player power will display as 0 until an energy item is pick up even though starting power is 1
 
 ### Requirements not completed
 
