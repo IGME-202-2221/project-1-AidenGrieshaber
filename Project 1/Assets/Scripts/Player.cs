@@ -144,8 +144,8 @@ public class Player : MonoBehaviour
 
     public void Shoot()
     {
-        Vector3 offVectorR = new Vector3(5, 0, 0);
-        Vector3 offVectorL = new Vector3(-5, 0, 0);
+        Vector3 offVectorR = new Vector3(0.1f, 0, 0);
+        Vector3 offVectorL = new Vector3(-0.1f, 0, 0);
 
         switch (Mathf.Floor(power))
         {

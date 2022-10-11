@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screen: {fileID: 994580670}
   playerBulletSmall: {fileID: 6176762732045519666, guid: e53e1153ea890e2448e803b65a146fca, type: 3}
+  playerBulletLarge: {fileID: 4709980190683350432, guid: fc83fc8979e048842be8308a61631ca6, type: 3}
   enemyBullet1: {fileID: 388882484937465710, guid: 0657a0ba3427f844ebe28ea150d97eee, type: 3}
   powerItemSmall: {fileID: 2320193911587505124, guid: a250e4c51eedeed4aa9e1022e3e53e10, type: 3}
   collisionManager: {fileID: 811920222}
@@ -444,6 +445,7 @@ MonoBehaviour:
   player: {fileID: 1632502798}
   hud: {fileID: 994580670}
   smallPlayerBullets: []
+  largePlayerBullets: []
   enemyBullets: []
   smallPowerItems: []
 --- !u!4 &811920223

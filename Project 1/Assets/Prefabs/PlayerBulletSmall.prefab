@@ -99,5 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 10, z: 0}
   manager: {fileID: 0}
-  friendly: 1
   name: playerBulletSmall
