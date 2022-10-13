@@ -37,9 +37,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     Sprite RightFrame2;
 
+    private int live = 5;
+
     private float velocityIndex = 0;
 
     private float power = 1;
+
+    [SerializeField]
+    private bool firing = false;
+
+    private float firingTimer = .1f;
 
     public float Power
     {
@@ -53,6 +60,12 @@ public class Player : MonoBehaviour
             if (power > 4)
                 power = 4;
         } 
+    }
+
+    public int Lives
+    {
+        get { return live; }
+        set { live = value; }
     }
 
     // Start is called before the first frame update
@@ -135,6 +148,38 @@ public class Player : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = RightFrame2;
         else if (velocityIndex < 0)
             GetComponent<SpriteRenderer>().sprite = RightFrame1;
+
+
+        firingTimer -= Time.deltaTime;
+        if (firing && firingTimer < 0)
+        {
+            firingTimer = .1f;
+
+            Vector3 offVectorR = new Vector3(0.1f, 0, 0);
+            Vector3 offVectorL = new Vector3(-0.1f, 0, 0);
+
+            switch (Mathf.Floor(power + .01f))
+            {
+                case 1:
+                    bank.RequestBullet(transform.position, "playerBulletSmall");
+                    break;
+                case 2:
+                    bank.RequestBullet(transform.position + offVectorR, "playerBulletSmall");
+                    bank.RequestBullet(transform.position + offVectorL, "playerBulletSmall");
+                    break;
+                case 3:
+                    bank.RequestBullet(transform.position, "playerBulletLarge");
+                    break;
+                case 4:
+                    bank.RequestBullet(transform.position, "playerBulletLarge");
+                    bank.RequestBullet(transform.position + offVectorR, "playerBulletSmall");
+                    bank.RequestBullet(transform.position + offVectorL, "playerBulletSmall");
+                    break;
+                default:
+                    bank.RequestBullet(transform.position, "playerBulletSmall");
+                    break;
+            }
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -142,31 +187,11 @@ public class Player : MonoBehaviour
         direction = context.ReadValue<Vector2>();
     }
 
-    public void Shoot()
+    public void Shoot(InputAction.CallbackContext context)
     {
-        Vector3 offVectorR = new Vector3(0.1f, 0, 0);
-        Vector3 offVectorL = new Vector3(-0.1f, 0, 0);
-
-        switch (Mathf.Floor(power))
-        {
-            case 1:
-                bank.RequestBullet(transform.position, "playerBulletSmall");
-                break;
-            case 2:
-                bank.RequestBullet(transform.position + offVectorR, "playerBulletSmall");
-                bank.RequestBullet(transform.position + offVectorL, "playerBulletSmall");
-                break;
-            case 3:
-                bank.RequestBullet(transform.position, "playerBulletLarge");
-                break;
-            case 4:
-                bank.RequestBullet(transform.position, "playerBulletLarge");
-                bank.RequestBullet(transform.position + offVectorR, "playerBulletSmall");
-                bank.RequestBullet(transform.position + offVectorL, "playerBulletSmall");
-                break;
-            default:
-                bank.RequestBullet(transform.position, "playerBulletSmall");
-                break;
-        }
+        if (context.phase == InputActionPhase.Started)
+            firing = true;
+        else if (context.phase == InputActionPhase.Canceled)
+            firing = false;
     }
 }

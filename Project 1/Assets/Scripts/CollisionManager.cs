@@ -15,6 +15,9 @@ public class CollisionManager : MonoBehaviour
     [SerializeField]
     HUDManager hud;
 
+    [SerializeField]
+    LivesManager livesManager;
+
     public List<GameObject> smallPlayerBullets = new List<GameObject>();
     public List<GameObject> largePlayerBullets = new List<GameObject>();
     public List<GameObject> enemyBullets = new List<GameObject>();
@@ -29,7 +32,10 @@ public class CollisionManager : MonoBehaviour
         {
             if (GetComponent<CollisionDetection>().CircleCollision(player, enemies[i]))
             {
-                enemies[i].GetComponent<Enemy>().damage(20);
+                enemies[i].GetComponent<Enemy>().damage(10);
+                Player p = player.GetComponent<Player>();
+                p.Lives--;
+                livesManager.DecreaseLife();
             }
         }
         //Enemy damage from bullets
@@ -61,6 +67,9 @@ public class CollisionManager : MonoBehaviour
             if (GetComponent<CollisionDetection>().CircleCollision(player, enemyBullets[i]))
             {
                 enemyBullets[i].GetComponent<Playerbullet>().Collide();
+                Player p = player.GetComponent<Player>();
+                p.Lives--;
+                livesManager.DecreaseLife();
             }
         }
         //player collect items

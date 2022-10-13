@@ -13,6 +13,15 @@ public class Playerbullet : MonoBehaviour
     [SerializeField]
     string name;
 
+    [SerializeField]
+    Sprite ExplosionFrame1;
+    [SerializeField]
+    Sprite ExplosionFrame2;
+    [SerializeField]
+    Sprite ExplosionFrame3;
+
+    private Sprite old;
+
     private bool active = false;
 
     private GameObject BulletBank;
