@@ -23,6 +23,7 @@ public class Playerbullet : MonoBehaviour
         if (active)
         {
             transform.position += velocity * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(Vector3.back, velocity.normalized);
 
             //Check for far bounds
             //Stop Y

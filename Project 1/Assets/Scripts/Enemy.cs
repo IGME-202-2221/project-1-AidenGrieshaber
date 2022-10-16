@@ -19,6 +19,18 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     string powerType;
 
+    private void Update()
+    {
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+
+        if (transform.position.y < -(height/2))
+        {
+            Despawn();
+        }
+    }
+
     public void damage(int damage)
     {
         health -= damage;
@@ -32,5 +44,11 @@ public class Enemy : MonoBehaviour
         collisionManager.RegisterKill(pointAmount);
         Destroy(gameObject);
         bulletBankManager.RequestBullet(transform.position, powerType);
+    }
+
+    public void Despawn()
+    {
+        collisionManager.RemoveEnemy(gameObject);
+        Destroy(gameObject);
     }
 }

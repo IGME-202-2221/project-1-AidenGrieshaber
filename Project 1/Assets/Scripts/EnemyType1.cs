@@ -38,6 +38,7 @@ public class EnemyType1 : MonoBehaviour
 
     private void Shoot()
     {
-        gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet1");
+        GameObject bullet = gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet1");
+        bullet.GetComponent<Playerbullet>().velocity = new Vector3(0, -2, 0);
     }
 }

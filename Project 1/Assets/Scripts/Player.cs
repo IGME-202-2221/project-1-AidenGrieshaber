@@ -182,6 +182,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Death()
+    {
+        power -= 1;
+        if (power < 1)
+            power = 1;
+
+
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         direction = context.ReadValue<Vector2>();

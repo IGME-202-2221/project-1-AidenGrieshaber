@@ -22,6 +22,7 @@ public class CollisionManager : MonoBehaviour
     public List<GameObject> largePlayerBullets = new List<GameObject>();
     public List<GameObject> enemyBullets = new List<GameObject>();
     public List<GameObject> smallPowerItems = new List<GameObject>();
+    public List<GameObject> largePowerItems = new List<GameObject>();
 
     // Update is called once per frame
     void Update()
@@ -78,7 +79,18 @@ public class CollisionManager : MonoBehaviour
             if (GetComponent<CollisionDetection>().AABBCollision(player, smallPowerItems[i]))
             {
                 smallPowerItems[i].GetComponent<Playerbullet>().Collide();
-                player.GetComponent<Player>().Power += 0.02f;
+                player.GetComponent<Player>().Power += 0.04f;
+
+                hud.power = player.GetComponent<Player>().Power;
+            }
+        }
+        //player collect items
+        for (int i = largePowerItems.Count - 1; i >= 0; i--)
+        {
+            if (GetComponent<CollisionDetection>().AABBCollision(player, largePowerItems[i]))
+            {
+                largePowerItems[i].GetComponent<Playerbullet>().Collide();
+                player.GetComponent<Player>().Power += 0.2f;
 
                 hud.power = player.GetComponent<Player>().Power;
             }
