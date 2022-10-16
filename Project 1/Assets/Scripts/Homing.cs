@@ -5,23 +5,28 @@ using UnityEngine;
 public class Homing : MonoBehaviour
 {
     public GameObject player;
+    private bool stop = false;
     
     // Update is called once per frame
     void Update()
     {
-        if ((player.transform.position - transform.position).magnitude < 4)
+        if (!stop)
         {
-            Vector3 vel = gameObject.GetComponent<Playerbullet>().velocity;
-            Vector3 toPlayer = player.transform.position - transform.position;
+            if ((player.transform.position - transform.position).magnitude < 3)
+            {
+                Vector3 vel = gameObject.GetComponent<Playerbullet>().velocity;
+                Vector3 toPlayer = player.transform.position - transform.position;
 
-            float playerAngle = (float)Mathf.Atan2(toPlayer.y, toPlayer.x);
-            float velocityAngle = (float)Mathf.Atan2(vel.y, vel.x);
+                float playerAngle = (float)Mathf.Atan2(toPlayer.y, toPlayer.x);
+                float velocityAngle = (float)Mathf.Atan2(vel.y, vel.x);
 
-            float angleBetween = playerAngle - velocityAngle;
-            if (Mathf.Abs(angleBetween) > .015f)
-                angleBetween = .015f * (angleBetween/ Mathf.Abs(angleBetween));
+                float angleBetween = playerAngle - velocityAngle;
 
-            gameObject.GetComponent<Playerbullet>().velocity = RotateRadians(vel, angleBetween);
+                if (Mathf.Abs(angleBetween) > .025f)
+                    angleBetween = .025f * (angleBetween / Mathf.Abs(angleBetween));
+
+                gameObject.GetComponent<Playerbullet>().velocity = RotateRadians(vel, angleBetween * 60 * Time.deltaTime);
+            }
         }
     }
 

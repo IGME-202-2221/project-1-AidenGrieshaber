@@ -35,8 +35,11 @@ public class CollisionManager : MonoBehaviour
             {
                 enemies[i].GetComponent<Enemy>().damage(10);
                 Player p = player.GetComponent<Player>();
-                p.Lives--;
-                livesManager.DecreaseLife();
+                if (p.invulnerabilityTimer <= 0)
+                {
+                    p.Death();
+                    livesManager.DecreaseLife();
+                }
             }
         }
         //Enemy damage from bullets
@@ -69,8 +72,11 @@ public class CollisionManager : MonoBehaviour
             {
                 enemyBullets[i].GetComponent<Playerbullet>().Collide();
                 Player p = player.GetComponent<Player>();
-                p.Lives--;
-                livesManager.DecreaseLife();
+                if (p.invulnerabilityTimer <= 0)
+                {
+                    p.Death();
+                    livesManager.DecreaseLife();
+                }
             }
         }
         //player collect items
