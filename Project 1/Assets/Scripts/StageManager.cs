@@ -14,6 +14,8 @@ public class StageManager : MonoBehaviour
     GameObject Enemy4;
     [SerializeField]
     GameObject Enemy5;
+    [SerializeField]
+    GameObject Boss;
 
     [SerializeField]
     HUDManager screen;

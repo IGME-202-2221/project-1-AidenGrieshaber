@@ -86,8 +86,6 @@ public class CollisionManager : MonoBehaviour
             {
                 smallPowerItems[i].GetComponent<Playerbullet>().Collide();
                 player.GetComponent<Player>().Power += 0.04f;
-
-                hud.power = player.GetComponent<Player>().Power;
             }
         }
         //player collect items
@@ -97,10 +95,10 @@ public class CollisionManager : MonoBehaviour
             {
                 largePowerItems[i].GetComponent<Playerbullet>().Collide();
                 player.GetComponent<Player>().Power += 0.2f;
-
-                hud.power = player.GetComponent<Player>().Power;
             }
         }
+
+        hud.power = player.GetComponent<Player>().Power;
     }
 
     public void AddEnemy(GameObject enemy)

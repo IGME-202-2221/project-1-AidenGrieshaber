@@ -111,9 +111,9 @@ public class EnemyType3 : MonoBehaviour
     {
         for (int i = -2; i <= 2; i++)
         {
-            GameObject bullet = gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet1");
+            GameObject bullet = gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet3");
             Vector3 trajectory = toPlayer;
-            trajectory = RotateDegrees(trajectory, 4 * i);
+            trajectory = RotateDegrees(trajectory, 3 * i);
             bullet.GetComponent<Playerbullet>().velocity = trajectory.normalized * 3;
         }
     }
@@ -122,7 +122,7 @@ public class EnemyType3 : MonoBehaviour
     {
         for (int i = 0; i <= 2; i++)
         {
-            GameObject bullet = gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet1");
+            GameObject bullet = gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet3");
             Vector3 trajectory = toPlayer;
             bullet.GetComponent<Playerbullet>().velocity = trajectory.normalized * (4 + i * 2);
         }
