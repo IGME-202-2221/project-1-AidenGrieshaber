@@ -22,6 +22,8 @@ public class BulletBankManager : MonoBehaviour
     GameObject enemyBullet4;
     [SerializeField]
     GameObject enemyBullet5;
+    [SerializeField]
+    GameObject bossBeam;
 
     [SerializeField]
     GameObject powerItemSmall;
@@ -40,6 +42,8 @@ public class BulletBankManager : MonoBehaviour
     private Stack<GameObject> enemyBullet3Bank;
     private Stack<GameObject> enemyBullet4Bank;
     private Stack<GameObject> enemyBullet5Bank;
+
+    private Stack<GameObject> bossBeamBank;
 
     private Stack<GameObject> powerBankSmall;
     private Stack<GameObject> powerBankLarge;
@@ -104,6 +108,15 @@ public class BulletBankManager : MonoBehaviour
             bullet.GetComponent<Playerbullet>().Collide();
             bullet.GetComponent<Playerbullet>().SetScreen(screen);
             enemyBullet5Bank.Push(bullet);
+        }
+        bossBeamBank = new Stack<GameObject>();
+        for (int i = 0; i < 0; i++)
+        {
+            GameObject bullet = Instantiate(bossBeam, transform.position, Quaternion.identity, transform);
+            bullet.GetComponent<Playerbullet>().SetBank(gameObject);
+            bullet.GetComponent<Playerbullet>().Collide();
+            bullet.GetComponent<Playerbullet>().SetScreen(screen);
+            bossBeamBank.Push(bullet);
         }
 
         powerBankSmall = new Stack<GameObject>();
@@ -177,6 +190,10 @@ public class BulletBankManager : MonoBehaviour
                 bank = enemyBullet5Bank;
                 bulletType = enemyBullet5;
                 break;
+            case "bossBeam":
+                bank = bossBeamBank;
+                bulletType = bossBeam;
+                break;
             case "powerItemSmall":
                 bank = powerBankSmall;
                 bulletType = powerItemSmall;
@@ -216,6 +233,7 @@ public class BulletBankManager : MonoBehaviour
             case "enemyBullet3":
             case "enemyBullet4":
             case "enemyBullet5":
+            case "bossBeam":
                 collisionManager.enemyBullets.Add(bullet);
                 break;
             case "powerItemSmall":
@@ -260,6 +278,11 @@ public class BulletBankManager : MonoBehaviour
             case "enemyBullet5":
                 enemyBullet5Bank.Push(bullet);
                 collisionManager.enemyBullets.Remove(bullet);
+                break;
+            case "bossBeam":
+                bossBeamBank.Push(bullet);
+                collisionManager.enemyBullets.Remove(bullet);
+                bullet.GetComponent<BossBeam>().BeamMode = false;
                 break;
             case "powerItemSmall":
                 powerBankSmall.Push(bullet);

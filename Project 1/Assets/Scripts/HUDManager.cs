@@ -17,6 +17,16 @@ public class HUDManager : MonoBehaviour
     TextMeshProUGUI powerLabel;
 
     [SerializeField]
+    TextMeshProUGUI victoryLabel;
+    [SerializeField]
+    TextMeshProUGUI defeatLabel;
+
+    [SerializeField]
+    GameObject buttonStart;
+    [SerializeField]
+    GameObject buttonEasy;
+
+    [SerializeField]
     Slider healthBar;
 
     [SerializeField]
@@ -32,5 +42,27 @@ public class HUDManager : MonoBehaviour
     {
         scoreLabel.text = "Score: " + score.ToString("000000000");
         powerLabel.text = "Power: " + power.ToString("0.00");
+    }
+
+    public void Victory()
+    {
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+        victoryLabel.transform.position = new Vector3(-hudWidth / 2 * width, -.2f, 0);
+    }
+
+    public void Defeat()
+    {
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+        defeatLabel.transform.position = new Vector3(-hudWidth / 2 * width, -.2f, 0);
+    }
+
+    public void Begin()
+    {
+        buttonStart.transform.position = new Vector3(0, 300, 0);
+        buttonEasy.transform.position = new Vector3(0, 300, 0);
     }
 }

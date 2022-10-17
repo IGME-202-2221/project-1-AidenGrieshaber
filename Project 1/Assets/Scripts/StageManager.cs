@@ -18,6 +18,9 @@ public class StageManager : MonoBehaviour
     GameObject Boss;
 
     [SerializeField]
+    GameObject Explosion;
+
+    [SerializeField]
     HUDManager screen;
 
     [SerializeField]
@@ -31,14 +34,16 @@ public class StageManager : MonoBehaviour
 
     private float spawnTimer = 150;
 
+    private bool start = false;
+
     // Update is called once per frame
     void Update()
     {
-        spawnTimer -= Time.deltaTime * 60;
 
-        if (spawnTimer < 0)
+        if (spawnTimer == 150)
         {
-            spawnTimer = 150;
+            spawnTimer -= Time.deltaTime * 60;
+            //spawnTimer = 150;
 
             /*
             Vector3 spawnPos = Vector3.zero;
@@ -114,7 +119,7 @@ public class StageManager : MonoBehaviour
             enemy.transform.position = spawnPos;
             collisionManager.AddEnemy(enemy);
             */
-
+            /*
             Vector3 spawnPos = Vector3.zero;
 
             Camera cam = Camera.main;
@@ -131,6 +136,30 @@ public class StageManager : MonoBehaviour
             enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
             enemy.transform.position = spawnPos;
             collisionManager.AddEnemy(enemy);
+            */
+            Vector3 spawnPos = Vector3.zero;
+
+            Camera cam = Camera.main;
+            float height = 2f * cam.orthographicSize;
+            float width = height * cam.aspect;
+
+            spawnPos.y = (height / 2) + 1;
+            spawnPos.x = 0 - (screen.hudWidth/2);
+
+            GameObject enemy = Instantiate(Boss, spawnPos, Quaternion.identity, transform);
+            enemy.GetComponent<Boss>().player = player;
+            enemy.GetComponent<Boss>().screen = screen;
+            enemy.GetComponent<Boss>().explosion = Explosion;
+            enemy.GetComponent<Boss>().col = collisionManager;
+            enemy.GetComponent<Enemy>().collisionManager = collisionManager;
+            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
+            enemy.transform.position = spawnPos;
+            collisionManager.AddEnemy(enemy);
         }
+    }
+
+    public void Begin()
+    {
+        start = true;
     }
 }

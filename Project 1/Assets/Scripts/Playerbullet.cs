@@ -31,11 +31,20 @@ public class Playerbullet : MonoBehaviour
             float height = 2f * cam.orthographicSize;
             float width = height * cam.aspect;
 
-            if (transform.position.y > (height / 2))
+            Transform t = transform;
+            if (t.position.y > (height / 2))
             {
                 Collide();
             }
-            else if (transform.position.y < -(height / 2))
+            else if (t.position.y < -(height / 2))
+            {
+                Collide();
+            }
+            else if (t.position.x < -width/2)
+            {
+                Collide();
+            }
+            else if (t.position.x > (width/2) - (manager.hudWidth * width))
             {
                 Collide();
             }

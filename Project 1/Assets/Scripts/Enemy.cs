@@ -38,6 +38,11 @@ public class Enemy : MonoBehaviour
             kill();
     }
 
+    public int PointAmount
+    {
+        get { return pointAmount; }
+    }
+
     private void kill()
     {
         collisionManager.RemoveEnemy(gameObject);

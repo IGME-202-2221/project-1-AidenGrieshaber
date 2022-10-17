@@ -24,6 +24,8 @@ public class CollisionManager : MonoBehaviour
     public List<GameObject> smallPowerItems = new List<GameObject>();
     public List<GameObject> largePowerItems = new List<GameObject>();
 
+    private bool easy = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -33,12 +35,17 @@ public class CollisionManager : MonoBehaviour
         {
             if (GetComponent<CollisionDetection>().CircleCollision(player, enemies[i]))
             {
-                enemies[i].GetComponent<Enemy>().damage(10);
                 Player p = player.GetComponent<Player>();
                 if (p.invulnerabilityTimer <= 0)
                 {
                     p.Death();
-                    livesManager.DecreaseLife();
+                    if (!easy)
+                        livesManager.DecreaseLife();
+                    else
+                    {
+                        p.Lives++;
+                        p.Power += 1;
+                    }
                 }
             }
         }
@@ -75,7 +82,13 @@ public class CollisionManager : MonoBehaviour
                 if (p.invulnerabilityTimer <= 0)
                 {
                     p.Death();
-                    livesManager.DecreaseLife();
+                    if (!easy)
+                        livesManager.DecreaseLife();
+                    else
+                    {
+                        p.Lives++;
+                        p.Power += 1;
+                    }
                 }
             }
         }
@@ -114,5 +127,10 @@ public class CollisionManager : MonoBehaviour
     public void RegisterKill(int pointAmount)
     {
         hud.score += pointAmount;
+    }
+
+    public void EasyMode()
+    {
+        easy = true;
     }
 }

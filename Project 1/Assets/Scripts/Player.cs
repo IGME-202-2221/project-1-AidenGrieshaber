@@ -229,6 +229,11 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, -1000, 0);
         vehiclePosition = new Vector3(0, -1000, 0);
         dead = true;
+
+        if (live <= 0)
+        {
+            manager.Defeat();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)

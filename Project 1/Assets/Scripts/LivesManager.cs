@@ -7,6 +7,9 @@ public class LivesManager : MonoBehaviour
     [SerializeField]
     GameObject lifeCounter;
 
+    [SerializeField]
+    HUDManager hud;
+
     private static int MAX_LIVES = 5;
 
     private int lives = 5;
