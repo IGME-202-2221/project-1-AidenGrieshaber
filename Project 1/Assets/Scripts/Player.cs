@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
-        power -= 1;
+        power -= .5f;
         if (power < 1)
             power = 1;
 

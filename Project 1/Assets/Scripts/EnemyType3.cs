@@ -62,7 +62,7 @@ public class EnemyType3 : MonoBehaviour
                         }
                         if (attackTracker > 2)
                         {
-                            attackCycle++;
+                            attackCycle=0;
                             attackTracker = 0;
                             bulletTimer = 0;
                         }

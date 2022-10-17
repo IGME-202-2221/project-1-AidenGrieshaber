@@ -81,7 +81,8 @@ public class Boss : MonoBehaviour
                     else
                     {
                         phase = 1;
-                        phasePause = 240;
+                        phasePause = 120;
+                        moveTimer = 0;
                     }
                     break;
                 case 0: //Death
@@ -91,7 +92,7 @@ public class Boss : MonoBehaviour
                         Instantiate(explosion, transform.position + new Vector3(0, 0, 2), Quaternion.identity, transform);
                     }
                     bulletCounter += 60 * Time.deltaTime;
-                    if (bulletCounter > 300)
+                    if (bulletCounter > 240)
                     {
                         Destroy(gameObject);
                         col.RemoveEnemy(gameObject);
@@ -269,11 +270,11 @@ public class Boss : MonoBehaviour
     {
         GameObject bullet = gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet1");
         Vector3 trajectory = toPlayer;
-        trajectory = RotateDegrees(trajectory, -25f);
+        trajectory = RotateDegrees(trajectory, -24f);
         bullet.GetComponent<Playerbullet>().velocity = trajectory.normalized * 4;
         GameObject bullet2 = gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet1");
         Vector3 trajectory2 = toPlayer;
-        trajectory2 = RotateDegrees(trajectory2, 25f);
+        trajectory2 = RotateDegrees(trajectory2, 24f);
         bullet2.GetComponent<Playerbullet>().velocity = trajectory2.normalized * 4;
     }
 

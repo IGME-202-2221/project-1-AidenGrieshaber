@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4134879603e17547bca0fffc6a29731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2400
+  health: 2500
   collisionManager: {fileID: 0}
   pointAmount: 50000
   bulletBankManager: {fileID: 0}
@@ -116,7 +116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  explosion: {fileID: 0}
   screen: {fileID: 0}
+  col: {fileID: 0}
   spritesheet:
   - {fileID: 1817871633, guid: 4243b6107c0d6bd47bd6cbdec5cc0206, type: 3}
   - {fileID: 1427689160, guid: 4243b6107c0d6bd47bd6cbdec5cc0206, type: 3}

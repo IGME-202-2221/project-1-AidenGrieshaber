@@ -44,7 +44,7 @@ public class CollisionManager : MonoBehaviour
                     else
                     {
                         p.Lives++;
-                        p.Power += 1;
+                        p.Power += .5f;
                     }
                 }
             }
@@ -87,7 +87,7 @@ public class CollisionManager : MonoBehaviour
                     else
                     {
                         p.Lives++;
-                        p.Power += 1;
+                        p.Power += .5f;
                     }
                 }
             }
@@ -98,7 +98,7 @@ public class CollisionManager : MonoBehaviour
             if (GetComponent<CollisionDetection>().AABBCollision(player, smallPowerItems[i]))
             {
                 smallPowerItems[i].GetComponent<Playerbullet>().Collide();
-                player.GetComponent<Player>().Power += 0.04f;
+                player.GetComponent<Player>().Power += 0.06f;
             }
         }
         //player collect items
@@ -107,7 +107,7 @@ public class CollisionManager : MonoBehaviour
             if (GetComponent<CollisionDetection>().AABBCollision(player, largePowerItems[i]))
             {
                 largePowerItems[i].GetComponent<Playerbullet>().Collide();
-                player.GetComponent<Player>().Power += 0.2f;
+                player.GetComponent<Player>().Power += 0.5f;
             }
         }
 
@@ -132,5 +132,6 @@ public class CollisionManager : MonoBehaviour
     public void EasyMode()
     {
         easy = true;
+        player.GetComponent<Player>().Power = 2;
     }
 }

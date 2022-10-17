@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4134879603e17547bca0fffc6a29731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 12
   collisionManager: {fileID: 0}
   pointAmount: 400
   bulletBankManager: {fileID: 0}
