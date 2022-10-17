@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 
     private float velocityIndex = 0;
 
-    private float power = 4;
+    private float power = 1;
 
     private float firingTimer = .1f;
 

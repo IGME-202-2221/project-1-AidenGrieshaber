@@ -32,14 +32,126 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     BulletBankManager bulletBankManager;
 
-    private float spawnTimer = 150;
+    private float spawnTimer = 0;
+    private float seconds = 0;
 
     private bool start = false;
 
     // Update is called once per frame
     void Update()
     {
+        if (start)
+        {
+            spawnTimer += Time.deltaTime * 60;
+            if (spawnTimer > 60)
+            {
+                Camera cam = Camera.main;
+                float height = 2f * cam.orthographicSize;
+                float width = height * cam.aspect;
+                seconds++;
+                spawnTimer = 0;
+                switch (seconds)
+                {
+                    case 2:
+                        for (int i = 0; i<4; i++)
+                        {
+                            Vector3 spawnPos = Vector3.zero;
+                            Vector3 anchorPos = Vector3.zero;
 
+                            spawnPos.y = (height / 2) + 1 + (.7f * i);
+                            spawnPos.x = -width / 2 + .5f;
+
+                            anchorPos.y = (height / 2) - ((height / 5) * 2);
+                            anchorPos.x = ((width / 2) - (screen.hudWidth * width) -.5f);
+
+                            GameObject enemy = Instantiate(Enemy1, spawnPos, Quaternion.identity, transform);
+                            enemy.GetComponent<EnemyType1>().swingPoint = anchorPos;
+                            enemy.GetComponent<Enemy>().collisionManager = collisionManager;
+                            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
+                            enemy.transform.position = spawnPos;
+                            collisionManager.AddEnemy(enemy);
+                        }
+                        break;
+                    case 12:
+                        for (int i = 0; i < 4; i++)
+                        {
+                            Vector3 spawnPos = Vector3.zero;
+                            Vector3 anchorPos = Vector3.zero;
+
+                            spawnPos.y = (height / 2) + 1 + (.7f * i);
+                            spawnPos.x = (width / 2) - (screen.hudWidth * width) - .5f;
+
+                            anchorPos.y = (height / 2) - ((height / 5) * 2);
+                            anchorPos.x = ((-width / 2) + .5f);
+
+                            GameObject enemy = Instantiate(Enemy1, spawnPos, Quaternion.identity, transform);
+                            enemy.GetComponent<EnemyType1>().swingPoint = anchorPos;
+                            enemy.GetComponent<Enemy>().collisionManager = collisionManager;
+                            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
+                            enemy.transform.position = spawnPos;
+                            collisionManager.AddEnemy(enemy);
+                        }
+                        break;
+                    case 22:
+                        for (int i = 0; i < 2; i++)
+                        {
+                            Vector3 spawnPos = Vector3.zero;
+                            Vector3 anchorPos = Vector3.zero;
+
+                            spawnPos.y = (height / 2) + 1 + (.7f * i);
+                            spawnPos.x = -width / 2 + .5f;
+
+                            anchorPos.y = (height / 2) - ((height / 5) * 2);
+                            anchorPos.x = (-width / 2) + .5f + (width/5 * 2);
+
+                            GameObject enemy = Instantiate(Enemy1, spawnPos, Quaternion.identity, transform);
+                            enemy.GetComponent<EnemyType1>().swingPoint = anchorPos;
+                            enemy.GetComponent<Enemy>().collisionManager = collisionManager;
+                            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
+                            enemy.transform.position = spawnPos;
+                            collisionManager.AddEnemy(enemy);
+                        }
+                        for (int i = 0; i < 2; i++)
+                        {
+                            Vector3 spawnPos = Vector3.zero;
+                            Vector3 anchorPos = Vector3.zero;
+
+                            spawnPos.y = (height / 2) + 1 + (.7f * i);
+                            spawnPos.x = (width / 2) - (screen.hudWidth * width) - .5f;
+
+                            anchorPos.y = (height / 2) - ((height / 5) * 2);
+                            anchorPos.x = ((width / 2) - .5f - (width / 5 * 2) - (screen.hudWidth * width));
+
+                            GameObject enemy = Instantiate(Enemy1, spawnPos, Quaternion.identity, transform);
+                            enemy.GetComponent<EnemyType1>().swingPoint = anchorPos;
+                            enemy.GetComponent<Enemy>().collisionManager = collisionManager;
+                            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
+                            enemy.transform.position = spawnPos;
+                            collisionManager.AddEnemy(enemy);
+                        }
+                        break;
+                    case 36:
+                        for (int i = 0; i < 2; i++)
+                        {
+                            Vector3 spawnPos = Vector3.zero;
+
+                            spawnPos.y = (height / 2) + 1;
+                            spawnPos.x = Random.Range(-width / 2, (width / 2));
+
+                            GameObject enemy = Instantiate(Enemy2, spawnPos, Quaternion.identity, transform);
+                            enemy.GetComponent<EnemyType2>().player = player;
+                            enemy.GetComponent<EnemyType2>().screen = screen;
+                            enemy.GetComponent<Enemy>().collisionManager = collisionManager;
+                            enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
+                            enemy.transform.position = spawnPos;
+                            collisionManager.AddEnemy(enemy);
+                        }
+                        break;
+                }
+            }
+        }
+
+        /*
         if (spawnTimer == 150)
         {
             spawnTimer -= Time.deltaTime * 60;
@@ -136,7 +248,7 @@ public class StageManager : MonoBehaviour
             enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
             enemy.transform.position = spawnPos;
             collisionManager.AddEnemy(enemy);
-            */
+            
             Vector3 spawnPos = Vector3.zero;
 
             Camera cam = Camera.main;
@@ -155,7 +267,7 @@ public class StageManager : MonoBehaviour
             enemy.GetComponent<Enemy>().bulletBankManager = bulletBankManager;
             enemy.transform.position = spawnPos;
             collisionManager.AddEnemy(enemy);
-        }
+        }*/
     }
 
     public void Begin()

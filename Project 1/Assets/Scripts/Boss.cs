@@ -330,7 +330,7 @@ public class Boss : MonoBehaviour
         {
             GameObject bullet = gameObject.GetComponent<Enemy>().bulletBankManager.RequestBullet(transform.position, "enemyBullet5");
             Vector3 trajectory = toPlayer;
-            trajectory = RotateDegrees(trajectory, 15 * i);
+            trajectory = RotateDegrees(trajectory, 5 * i);
             bullet.GetComponent<Playerbullet>().velocity = trajectory.normalized * 5;
             bullet.GetComponent<Homing>().player = player;
         }
